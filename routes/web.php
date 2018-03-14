@@ -16,6 +16,9 @@ Route::get('/', function () {
     return view('welcome'); //chama a view welcome do laravel
 });
 
+//criando a rota para o controller de contatos generico index
+Route::get("/contato_control", ['uses'=>'ControllerContato@index']);
+
 //Criando rota para o caminho contato
 Route::get('/contato', function(){
   return "caminho para contato";
@@ -32,13 +35,7 @@ Route::get('/id_opcional/{id?}', function($id=null){
 });
 
 //criando rota para o post do site
-Route::post('/post', function(){
-  dd($_POST); //dd é um metodo do laravel que printa como json a variavel e da finish na função
-  return "Rota selecionada para post";
-});
+Route::post('/post', ['uses'=>'ControllerContato@posts']);
 
 //criando rota para o put do site, usado para updates de registro
-Route::put('/put', function(){
-  dd($_POST);
-  return "Rota selecionada para PUT";
-});
+Route::put('/put', ['uses'=>'ControllerContato@puts']);
