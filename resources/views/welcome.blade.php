@@ -85,6 +85,19 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <h2>Redirecionamento para post e put</h2>
+                <form action="/post" method="post">
+                  {{csrf_field()}} <!-- cria um token para validar o post -->
+                  Post <input type="text" name="nome" placeholder="digite o nome"/>
+                  <button>Enviar</button>
+                </form>
+
+                <form action="/put" method="post">
+                  {{csrf_field()}} <!-- cria um token para validar o post -->
+                  <input type="hidden" name="_method" value='put'/> <!-- Para usar o put é essencial ter esse _method -->
+                  Put <input type="text" name="nome" placeholder="digite o nome"/>
+                  <button>Enviar</button>
+                </form>
             </div>
         </div>
     </body>
